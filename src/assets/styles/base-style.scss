@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  appearance: none;
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+* {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+html {
+  font-family: 'Caveat', cursive;
+  background: $canvas-background;
+  -webkit-text-size-adjust: 100%;
+  box-sizing: border-box;
+}
+html,
+body {
+  overscroll-behavior-y: none;
+}
+::selection {
+  color: $selection-color;
+  background: $selection-background;
+}
+html *:not(input),
+html *:not(select),
+html *:not(textarea) {
+  user-select: none;
+}

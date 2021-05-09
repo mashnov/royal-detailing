@@ -1,0 +1,18 @@
+$screen-xs: map-get($grid-breakpoints, 'xs');
+$screen-sm: map-get($grid-breakpoints, 'sm');
+$screen-md: map-get($grid-breakpoints, 'md');
+$screen-lg: map-get($grid-breakpoints, 'lg');
+$screen-xl: map-get($grid-breakpoints, 'xl');
+
+$animation-easing: cubic-bezier(0.5, 0, 0.5 ,1);
+
+$c1: #ffffff;
+$c2: #333333;
+$c3: #212121;
+$c4: #1d1d1d;
+$c5: #000000;
+
+// base
+$selection-color: $c2;
+$selection-background: $c5;
+$canvas-background: $c3;

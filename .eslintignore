@@ -1,0 +1,7 @@
+.eslintrc.js
+vue.config.js
+babel.config.js
+src/main.js
+config/*.js
+node_modules
+dist
