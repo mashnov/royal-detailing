@@ -1,20 +1,15 @@
 <template>
-  <div id="app">
-    <Header>
-      <template slot="details">
-        <StartDetails />
-      </template>
-      <template slot="form">
-        <StartForm />
-      </template>
-    </Header>
+  <div class="app">
+    <Background />
+    <PageContent />
+    <Menu />
   </div>
 </template>
 
 <script>
-import Header from '@/components/header/Header';
-import StartDetails from '@/components/start-details/StartDetails';
-import StartForm from '@/components/start-form/StartForm';
+import Background from '@/components/background/Background';
+import PageContent from '@/components/page-content/PageContent';
+import Menu from '@/components/menu/Menu';
 
 export default {
   name: 'App',
@@ -28,9 +23,9 @@ export default {
     ],
   },
   components: {
-    Header,
-    StartDetails,
-    StartForm,
+    Background,
+    PageContent,
+    Menu,
   },
 };
 
@@ -38,4 +33,19 @@ export default {
 
 <style lang="scss">
   @import "assets/styles/base-style";
+</style>
+
+<style lang="scss" scoped>
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-bottom: 89px;
+}
+@media (min-width: $screen-sm) {
+  .app {
+    padding-bottom: 109px;
+  }
+}
 </style>

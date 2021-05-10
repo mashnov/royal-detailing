@@ -1,20 +1,20 @@
 <template>
-  <div class="start-form">
+  <div class="appointment-form">
     <div class="row mb-5">
       <div class="col-12">
-        <div class="start-form__title">
+        <div class="appointment-form__title">
           Записаться
         </div>
       </div>
     </div>
-    <div class="start-form__wrapper">
+    <div class="appointment-form__wrapper">
       <transition
         appear
         name="fade-in"
       >
         <div
           v-if="formIsSend"
-          class="start-form__message"
+          class="appointment-form__message"
         >
           <span>
             Сообщение успешно отправлено
@@ -81,7 +81,7 @@ const PHONE_MIN_LENGTH = 7;
 const NAME_MIN_LENGTH = 3;
 
 export default {
-  name: 'StartForm',
+  name: 'appointment-form',
   components: {
     RoTelInput,
     RoInput,
@@ -91,7 +91,7 @@ export default {
     formIsSend: false,
   }),
   computed: {
-    ...mapGetters('reception', {
+    ...mapGetters('appointment', {
       getName: 'GET_NAME',
       getPhone: 'GET_PHONE',
       getBrand: 'GET_BRAND',
@@ -111,7 +111,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions('reception', {
+    ...mapActions('appointment', {
       setName: 'SET_NAME',
       setPhone: 'SET_PHONE',
       setBrand: 'SET_BRAND',
@@ -130,11 +130,10 @@ export default {
     },
   },
 };
-
 </script>
 
 <style lang="scss" scoped>
-.start-form {
+.appointment-form {
   padding: 20px 40px;
   background: rgba($c2, 0.4);
   backdrop-filter: blur(20px);
@@ -143,16 +142,16 @@ export default {
   text-shadow: -1px -1px 1px $c5;
   box-shadow: 0 0 15px $c5;
 }
-.start-form__title {
+.appointment-form__title {
   text-align: center;
   font-size: 41px;
   line-height: 43px;
   color: $c1;
 }
-.start-form__wrapper {
+.appointment-form__wrapper {
   position: relative;
 }
-.start-form__message {
+.appointment-form__message {
   position: absolute;
   display: flex;
   top: 0;
@@ -167,7 +166,7 @@ export default {
   border-radius: 10px;
   z-index: 1;
 }
-.start-form__message span {
+.appointment-form__message span {
   text-align: center;
   font-size: 55px;
   color: rgba($c1, 0.7);

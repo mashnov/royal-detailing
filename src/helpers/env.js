@@ -10,6 +10,7 @@ const TELEGRAM_CUSTOMERS_BOT_TOKEN = get(ENV, 'VUE_APP_TELEGRAM_CUSTOMERS_BOT_TO
 const TELEGRAM_CUSTOMERS_CHAT_ID = get(ENV, 'VUE_APP_TELEGRAM_CUSTOMERS_CHAT_ID', null);
 const TELEGRAM_API_URL_GET_LOGS = get(ENV, 'VUE_APP_TELEGRAM_API_URL_GET_LOGS', null);
 const TELEGRAM_API_URL_SEND_MESSAGE = get(ENV, 'VUE_APP_TELEGRAM_API_URL_SEND_MESSAGE', null);
+const VUE_APP_YANDEX_MAP_SCRIPT_SRC = get(ENV, 'VUE_APP_YANDEX_MAP_SCRIPT_SRC', null);
 
 export const isProd = NODE_ENV === 'production';
 export const publicPath = PUBLIC_PATH;
@@ -19,3 +20,4 @@ export const telegramCustomerBotToken = TELEGRAM_CUSTOMERS_BOT_TOKEN;
 export const telegramCustomerChatId = TELEGRAM_CUSTOMERS_CHAT_ID;
 export const telegramApiUrlGetLogs = TELEGRAM_API_URL_GET_LOGS;
 export const telegramApiUrlSendMessage = TELEGRAM_API_URL_SEND_MESSAGE;
+export const yandexMapScriptSrc = VUE_APP_YANDEX_MAP_SCRIPT_SRC;

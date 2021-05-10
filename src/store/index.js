@@ -1,13 +1,15 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import reception from './reception';
+import appointment from './appointment';
+import main from './main';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   strict: true,
   modules: {
-    reception,
+    appointment,
+    main,
   },
 });

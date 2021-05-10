@@ -8,7 +8,7 @@
 import LogoIcon from '@/assets/svg/logo.svg';
 
 export default {
-  name: 'Header',
+  name: 'Logo',
   components: {
     LogoIcon,
   },

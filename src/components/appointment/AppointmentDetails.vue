@@ -1,5 +1,5 @@
 <template>
-  <div class="start-details">
+  <div class="appointment-details">
     <div class="row mb-3">
       <div class="col-8 offset-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
         <Logo />
@@ -7,7 +7,7 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <div class="start-details__title">
+        <div class="appointment-details__title">
           <h1>RoyalDetailing</h1>
           <h2>detailing & carwash</h2>
         </div>
@@ -29,27 +29,27 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.start-details {
+.appointment-details {
   margin: auto;
 }
-.start-details__title {
+.appointment-details__title {
   text-align: center;
 }
-.start-details__title span {
+.appointment-details__title span {
   display: block;
   text-shadow: -1px -1px 1px $c5;
 }
-.start-details__title h1 {
+.appointment-details__title h1 {
   font-size: 41px;
   line-height: 43px;
   color: rgba($c1, 0.9);
   margin-bottom: 5px;
 }
-.start-details__title h2 {
+.appointment-details__title h2 {
   display: none;
 }
 @media (min-width: $screen-lg) {
-  .start-details__title h2 {
+  .appointment-details__title h2 {
     display: block;
     text-transform: uppercase;
     font-size: 31px;

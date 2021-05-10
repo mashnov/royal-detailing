@@ -4,7 +4,7 @@ import actions from './actions';
 import mutations from './mutations';
 
 export default {
-  moduleName: 'reception',
+  moduleName: 'appointment',
   namespaced: true,
   state,
   getters,
