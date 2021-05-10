@@ -1,5 +1,9 @@
 <template>
   <div class="header">
+    <div
+      class="header__video-filter"
+      :style="videoStyle"
+    />
     <VideoBg
       :sources="sources"
       :img="img"
@@ -20,6 +24,7 @@
 </template>
 
 <script>
+import { publicPath } from '@/helpers/env';
 import VideoBg from 'vue-videobg';
 
 export default {
@@ -27,16 +32,25 @@ export default {
   components: {
     VideoBg,
   },
-  data: () => ({
-    sources: ['/video/header.mp4'],
-    img: '/images/header/background.jpg',
-  }),
+  computed: {
+    sources() {
+      return [
+        `${publicPath}header/header.mp4`,
+      ];
+    },
+    img() {
+      return `${publicPath}header/header.jpg`;
+    },
+    videoStyle() {
+      return { backgroundImage: `url('${publicPath}header/video.png')` };
+    },
+  },
 };
 
 </script>
 
 <style lang="scss" scoped>
-  .header:after {
+  .header__video-filter {
     content: '';
     position: absolute;
     width: 100%;
@@ -44,7 +58,6 @@ export default {
     top: 0;
     left: 0;
     background-color: rgba($c5, 0.7);
-    background-image: url('/images/header/video.png');
     z-index: 2;
   }
   .header ::v-deep section {

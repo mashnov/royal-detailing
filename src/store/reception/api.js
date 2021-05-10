@@ -13,10 +13,10 @@ export default {
     try {
       const repsonse = await axios.get(requestUrl, { params });
       const status = get(repsonse, 'status', false);
-      return { successes: parseInt(status) === 200 };
+      return { success: parseInt(status) === 200 };
     }
     catch {
-      return { successes: false };
+      return { success: false };
     }
   },
 };

@@ -87,6 +87,12 @@
 ### Commit and push
 > - Don't commit without solving all `.eslint` problems.
 
+### GitHub Pages Deploy
+> - Comment `dist` in .gitignore file.
+> - Build project for production using `npm run build`.
+> - Make a `deploy` commit with `dist` folder.
+> - Push only `dist` folder `git subtree push --prefix dist origin gh-pages`.
+
 ### Docs
 > - [Vue](https://vuejs.org/)
 > - [Vuex](https://vuex.vuejs.org/)

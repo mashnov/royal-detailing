@@ -8,8 +8,8 @@
     <div class="row">
       <div class="col-12">
         <div class="start-details__title">
-          <span>RoyalDetailing</span>
-          <span>DETAILING & CARWASH</span>
+          <h1>RoyalDetailing</h1>
+          <h2>detailing & carwash</h2>
         </div>
       </div>
     </div>
@@ -39,21 +39,22 @@ export default {
   display: block;
   text-shadow: -1px -1px 1px $c5;
 }
-.start-details__title span:nth-child(1) {
+.start-details__title h1 {
   font-size: 41px;
   line-height: 43px;
   color: rgba($c1, 0.9);
   margin-bottom: 5px;
 }
-.start-details__title span:nth-child(2) {
+.start-details__title h2 {
   display: none;
 }
 @media (min-width: $screen-lg) {
-  .start-details__title span:nth-child(2) {
+  .start-details__title h2 {
     display: block;
+    text-transform: uppercase;
     font-size: 31px;
     line-height: 33px;
-    color: rgba($c1, 0.5);
+    color: rgba($c1, 0.6);
   }
 }
 </style>

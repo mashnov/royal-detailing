@@ -3,12 +3,25 @@
     class="ro-input"
     :class="disabled && 'ro-input_disabled'"
   >
+    <transition
+      appear
+      name="fade-in"
+    >
+      <div
+        v-if="label && (isFocused || value)"
+        class="ro-input__label"
+      >
+        {{ label }}
+      </div>
+    </transition>
     <label>
       <input
         type="text"
         :disabled="disabled"
         :value="value"
         :placeholder="placeholder"
+        @focus="isFocused = true"
+        @blur="isFocused = false"
         @keypress.enter="eventHandler('enter-press')"
         @input="eventHandler('input', $event.target.value)"
       />
@@ -29,11 +42,18 @@
         default: '',
         validator: (prop) => ['string'].includes(typeof prop) || prop === null,
       },
+      label: {
+        default: '',
+        validator: (prop) => ['string'].includes(typeof prop) || prop === null,
+      },
       disabled: {
         type: Boolean,
         default: false,
       },
     },
+    data: () => ({
+      isFocused: false,
+    }),
     methods: {
       eventHandler(eventName, $event) {
         const { disabled } = this;
@@ -47,6 +67,7 @@
 
 <style lang="scss" scoped>
   .ro-input {
+    position: relative;
     display: block;
     width: 100%;
     border-radius: 8px;
@@ -57,6 +78,18 @@
   }
   .ro-input_disabled {
     cursor: not-allowed;
+  }
+  .ro-input__label {
+    position: absolute;
+    border-radius: 8px;
+    background-color: $c2;
+    border: 1px solid rgba($c1, 0.2);
+    box-shadow: inset 0 0 15px $c5;
+    padding: 2px 10px;
+    font-size: 15px;
+    color: rgba($c1, 0.6);
+    top: -13px;
+    left: 10px;
   }
   .ro-input label {
     display: block;
@@ -70,6 +103,7 @@
     color: rgba($c1, 0.6);
     border: none;
     appearance: none;
+    user-select: all;
     background-color: transparent;
   }
   .ro-input input::-webkit-input-placeholder {

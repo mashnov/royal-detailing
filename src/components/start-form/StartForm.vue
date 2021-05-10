@@ -7,45 +7,63 @@
         </div>
       </div>
     </div>
-    <div class="row mb-3">
-      <div class="col-12">
-        <RoInput
-          :disabled="getIsPending"
-          :value="getName"
-          placeholder="Имя (обязательно)"
-          @input="setName"
-        />
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col-12">
-        <RoInput
-          :disabled="getIsPending"
-          :value="getBrand"
-          placeholder="Номер или марка машины"
-          @input="setBrand"
-        />
-      </div>
-    </div>
-    <div class="row mb-5">
-      <div class="col-12">
-        <RoTelInput
-          :disabled="getIsPending"
-          :value="getPhone"
-          mask="+7 (###) ### ## ##"
-          placeholder="Номер телефона (обязательно)"
-          @input="setPhone"
-        />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12 col-md-6 offset-md-6">
-        <Button
-          :disabled="submitIsDisabled"
-          @click="sendMessage"
+    <div class="start-form__wrapper">
+      <transition
+        appear
+        name="fade-in"
+      >
+        <div
+          v-if="formIsSend"
+          class="start-form__message"
         >
-          Отправить
-        </Button>
+          <span>
+            Сообщение успешно отправлено
+          </span>
+        </div>
+      </transition>
+      <div class="row mb-3">
+        <div class="col-12">
+          <RoInput
+            :disabled="getIsPending"
+            :value="getName"
+            label="Имя"
+            placeholder="Имя"
+            @input="setName"
+          />
+        </div>
+      </div>
+      <div class="row mb-5">
+        <div class="col-12">
+          <RoTelInput
+            :disabled="getIsPending"
+            :value="getPhone"
+            label="Номер телефона"
+            mask="+# (###) ### ## ##"
+            placeholder="+7 (___) ___ __ __"
+            @input="setPhone"
+          />
+        </div>
+      </div>
+      <div class="row mb-5">
+        <div class="col-12">
+          <RoInput
+            :disabled="getIsPending"
+            :value="getBrand"
+            label="Номер или марка машины"
+            placeholder="Номер или марка машины"
+            @input="setBrand"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-6 offset-md-6">
+          <Button
+            :disabled="submitIsDisabled"
+            @click="sendMessageHandler"
+          >
+            Отправить
+          </Button>
+        </div>
       </div>
     </div>
   </div>
@@ -53,6 +71,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import { sleep } from '@/helpers/sleep';
 
 import RoTelInput from '@/components/ro-tel-input/RoTelInput';
 import RoInput from '@/components/ro-input/RoInput';
@@ -68,6 +87,9 @@ export default {
     RoInput,
     Button,
   },
+  data: () => ({
+    formIsSend: false,
+  }),
   computed: {
     ...mapGetters('reception', {
       getName: 'GET_NAME',
@@ -77,11 +99,11 @@ export default {
     }),
     phoneIsEmpty() {
       const { getPhone } = this;
-      return (getPhone || '').trim().length > PHONE_MIN_LENGTH;
+      return (getPhone || '').trim().length < PHONE_MIN_LENGTH;
     },
     nameIsEmpty() {
       const { getName } = this;
-      return (getName || '').trim().length > NAME_MIN_LENGTH;
+      return (getName || '').trim().length < NAME_MIN_LENGTH;
     },
     submitIsDisabled() {
       const { getIsPending, phoneIsEmpty, nameIsEmpty } = this;
@@ -95,6 +117,17 @@ export default {
       setBrand: 'SET_BRAND',
       sendMessage: 'SEND_MESSAGE',
     }),
+    async sendMessageHandler() {
+      const { success } = await this.sendMessage();
+      if (success) {
+        this.setName('');
+        this.setPhone('');
+        this.setBrand('');
+        this.formIsSend = true;
+        await sleep(5000);
+        this.formIsSend = false;
+      }
+    },
   },
 };
 
@@ -102,7 +135,7 @@ export default {
 
 <style lang="scss" scoped>
 .start-form {
-  padding: 40px;
+  padding: 20px 40px;
   background: rgba($c2, 0.4);
   backdrop-filter: blur(20px);
   border-radius: 12px;
@@ -115,5 +148,28 @@ export default {
   font-size: 41px;
   line-height: 43px;
   color: $c1;
+}
+.start-form__wrapper {
+  position: relative;
+}
+.start-form__message {
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+  flex-wrap: wrap;
+  align-content: center;
+  width: calc(100% + 30px);
+  height: calc(100% + 30px);
+  transform: translateY(-15px) translateX(-15px);
+  backdrop-filter: blur(10px);
+  background: rgba($c2, 0.8);
+  border-radius: 10px;
+  z-index: 1;
+}
+.start-form__message span {
+  text-align: center;
+  font-size: 55px;
+  color: rgba($c1, 0.7);
 }
 </style>

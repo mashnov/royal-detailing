@@ -15,11 +15,11 @@ const faviconConfig = {
   mode: 'webapp',
   devMode: 'webapp',
   prefix: 'favicon/',
-  background: '#404040',
+  background: 'transparent',
   theme_color: '#404040',
   favicons: {
-    appName: 'RoyalDetailing',
-    description: 'RoyalDetailing - detailing & car wash',
+    appName: appName,
+    description: description,
     icons: {
       android: true,
       appleIcon: true,
@@ -35,7 +35,7 @@ const faviconConfig = {
 
 const WebpackBarConfig = {
   name: appName,
-  color: '#FFFFFF',
+  color: '#404040',
 };
 
 const notifierConfig = {

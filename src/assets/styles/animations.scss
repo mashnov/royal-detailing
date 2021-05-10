@@ -1,0 +1,8 @@
+.fade-in {
+  &-enter-active {
+    animation: fadeIn 0.3s $animation-easing;
+  }
+  &-leave-active {
+    animation: fadeIn 0.2s $animation-easing reverse;
+  }
+}

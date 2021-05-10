@@ -13,12 +13,10 @@ export default {
     const messageText = `${nameText}\n${phoneText}\n${brandText}`;
 
     commit('MUTATE_STATE_FIELD', { field: 'isPending', value: true });
-    const { successes } = await Api.SEND_MESSAGE(messageText);
+    const { success } = await Api.SEND_MESSAGE(messageText);
     commit('MUTATE_STATE_FIELD', { field: 'isPending', value: false });
 
-    if (!successes) {
-      console.error('Something Went Wrong!');
-    }
+    return { success };
   },
   SET_NAME({ commit }, name) {
     commit('MUTATE_STATE_FIELD', { field: 'name', value: name });
