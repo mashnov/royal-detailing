@@ -1,6 +1,7 @@
 <template>
   <div class="app">
     <Background />
+    <SocialLink />
     <PageContent />
     <Menu />
   </div>
@@ -8,6 +9,7 @@
 
 <script>
 import Background from '@/components/background/Background';
+import SocialLink from '@/components/social-link/SocialLink';
 import PageContent from '@/components/page-content/PageContent';
 import Menu from '@/components/menu/Menu';
 
@@ -24,6 +26,7 @@ export default {
   },
   components: {
     Background,
+    SocialLink,
     PageContent,
     Menu,
   },

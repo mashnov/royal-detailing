@@ -1,11 +1,9 @@
 <template>
   <div class="background">
-    <div
-      class="background__video-filter"
-      :style="filterStyle"
-    />
+    <div class="background__video-filter" />
     <video
       class="background__video-player"
+      :poster="videoPoster"
       :src="videoSource"
       playsinline
       autoplay
@@ -16,18 +14,13 @@
 </template>
 
 <script>
-import { publicPath } from '@/helpers/env';
 
 export default {
   name: 'Background',
-  computed: {
-    videoSource() {
-      return `${publicPath}header/header.mp4`;
-    },
-    filterStyle() {
-      return { backgroundImage: `url('${publicPath}header/video.png')` };
-    },
-  },
+  data: () => ({
+    videoSource: '/header/header.mp4',
+    videoPoster: '/header/header.jpg',
+  }),
 };
 
 </script>
@@ -47,6 +40,7 @@ export default {
   height: 100%;
   top: 0;
   left: 0;
+  background-image: url('/header/header.png');
   background-color: rgba($c5, 0.7);
   z-index: 2;
 }

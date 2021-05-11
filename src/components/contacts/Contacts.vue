@@ -1,7 +1,7 @@
 <template>
   <div class="contacts">
     <div class="container">
-      <div class="row mb-3">
+      <div class="row mb-4">
         <div class="col-12">
           <div class="contacts__wrapper">
             <div class="contacts__script">
@@ -10,7 +10,7 @@
                 async
                 type="text/javascript"
                 charset="utf-8"
-                :src="src"
+                :src="yandexMapScriptSrc"
               />
             </div>
           </div>
@@ -20,11 +20,17 @@
         <div class="col-12">
           <div class="contacts__address">
             <span>
-              <b>Наш адрес</b>: <a :href="link" target="_blank">198095, Россия, Санкт-Петербург, Митрофаньевское шоссе, 18</a>
+              <b>Наш адрес</b>:
+              <a
+                :href="yandexMapLink"
+                target="_blank"
+              >
+                198095, Россия, Санкт-Петербург, Митрофаньевское шоссе, 18
+              </a>
             </span>
             <a
               target="_blank"
-              :href="link"
+              :href="yandexMapLink"
             >
               <YandexNavigatorLogo />
             </a>
@@ -46,8 +52,8 @@ export default {
     YandexNavigatorLogo,
   },
   data: () => ({
-    src: yandexMapScriptSrc,
-    link: yandexMapLink,
+    yandexMapScriptSrc,
+    yandexMapLink,
   }),
 };
 </script>
