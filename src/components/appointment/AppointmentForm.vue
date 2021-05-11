@@ -136,7 +136,10 @@ export default {
 .appointment-form {
   padding: 20px 40px;
   background: rgba($c2, 0.4);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(5px);
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  perspective: 1px;
   border-radius: 12px;
   border: 1px solid rgba($c1, 0.15);
   text-shadow: -1px -1px 1px $c5;
@@ -160,8 +163,10 @@ export default {
   align-content: center;
   width: calc(100% + 30px);
   height: calc(100% + 30px);
-  transform: translateY(-15px) translateX(-15px);
-  backdrop-filter: blur(10px);
+  transform: translateY(-15px) translateX(-15px) translateZ(0);
+  backdrop-filter: blur(5px);
+  backface-visibility: hidden;
+  perspective: 1px;
   background: rgba($c2, 0.8);
   border-radius: 10px;
   z-index: 1;

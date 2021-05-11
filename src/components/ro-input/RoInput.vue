@@ -73,7 +73,10 @@
     border-radius: 8px;
     border: 1px solid rgba($c1, 0.2);
     box-shadow: inset 0 0 15px $c5;
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(5px);
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    perspective: 1px;
     padding: 15px;
   }
   .ro-input_disabled {

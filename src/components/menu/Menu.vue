@@ -2,41 +2,53 @@
   <div class="menu">
     <div class="container">
       <div class="row">
-        <div class="col-4">
-          <div
+        <div class="col-3">
+          <RouterLink
             class="menu__item"
+            :to="{ name: 'appointment' }"
             :class="currentPageName === 'appointment' && 'menu__item_active'"
-            @click="setPageName('appointment')"
           >
             <LogoIcon />
             <span>
               Запись
             </span>
-          </div>
+          </RouterLink>
         </div>
-        <div class="col-4">
-          <div
+        <div class="col-3">
+          <RouterLink
             class="menu__item"
+            :to="{ name: 'service' }"
             :class="currentPageName === 'service' && 'menu__item_active'"
-            @click="setPageName('service')"
           >
             <ServiceIcon />
             <span>
               Услуги
             </span>
-          </div>
+          </RouterLink>
         </div>
-        <div class="col-4">
-          <div
+        <div class="col-3">
+          <RouterLink
             class="menu__item"
-            :class="currentPageName === 'map' && 'menu__item_active'"
-            @click="setPageName('map')"
+            :to="{ name: 'review' }"
+            :class="currentPageName === 'review' && 'menu__item_active'"
+          >
+            <ReviewIcon />
+            <span>
+              Отзывы
+            </span>
+          </RouterLink>
+        </div>
+        <div class="col-3">
+          <RouterLink
+            class="menu__item"
+            :to="{ name: 'contacts' }"
+            :class="currentPageName === 'contacts' && 'menu__item_active'"
           >
             <LocationIcon />
             <span>
               Контакты
             </span>
-          </div>
+          </RouterLink>
         </div>
       </div>
     </div>
@@ -44,10 +56,9 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
-
 import LogoIcon from '@/assets/svg/logo.svg';
 import ServiceIcon from '@/assets/svg/service-icon.svg';
+import ReviewIcon from '@/assets/svg/review-icon.svg';
 import LocationIcon from '@/assets/svg/location-icon.svg';
 
 export default {
@@ -55,17 +66,14 @@ export default {
   components: {
     LogoIcon,
     ServiceIcon,
+    ReviewIcon,
     LocationIcon,
   },
   computed: {
-    ...mapGetters('main', {
-      currentPageName: 'GET_PAGE_NAME',
-    }),
-  },
-  methods: {
-    ...mapActions('main', {
-      setPageName: 'SET_PAGE_NAME',
-    }),
+    currentPageName() {
+      const { $route } = this;
+      return $route.name || '';
+    },
   },
 };
 </script>
@@ -78,16 +86,21 @@ export default {
   bottom: 0;
   left: 0;
   background-color: rgba($c4, 0.6);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(10px);
   border-top: 1px solid rgba($c1, 0.15);
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  perspective: 1px;
   z-index: 3;
 }
 .menu__item {
+  display: block;
   padding: 10px 0;
   background: rgba($c2, 0.4);
   border-radius: 12px;
   border: 1px solid rgba($c1, 0.15);
   transition: background 0.15s $animation-easing;
+  text-decoration: none;
   cursor: pointer;
 }
 .menu__item:not(.menu__item_active):hover {

@@ -7,6 +7,7 @@ import { lockKeyboardScroll } from '@/helpers/scroll';
 import App from './App.vue';
 
 import store from './store';
+import router from './router';
 
 Vue.config.silent = isProd;
 Vue.config.devtools = !isProd;
@@ -20,5 +21,6 @@ lockKeyboardScroll();
 new Vue({
   el: '#app',
   store,
+  router,
   render: (h) => h(App),
 });
